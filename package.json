@@ -1,7 +1,7 @@
 {
   "name": "nodeblog",
   "version": "1.0.0",
-  "description": "",
+  "description": "A website full of fake news",
   "main": "app.js",
   "scripts": {
     "start": "nodemon app"
