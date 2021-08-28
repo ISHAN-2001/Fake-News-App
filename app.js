@@ -1,7 +1,9 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const morgan = require('morgan')
 
 const app = express();
+app.use(morgan('tiny'));
 
 //--------Connecting DB-------//
 let url  = require('./config/db')
@@ -26,9 +28,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use('', require('./routes/login'));
 app.use('/news', require('./routes/news'));
 
-app.get('/404', (req, res) => {
-    res.status(400).render('404');
-});
+app.use(function(req, res, next) {
+    res.status(404);
+  
+    // respond with html page
+    if (req.accepts('html')) {
+      res.render('404');
+      return;
+    }
+
+  });
 
 //-----Server----//
 app.listen(3000, console.log(`Running on http://localhost:3000`));

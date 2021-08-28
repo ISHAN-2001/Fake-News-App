@@ -6,19 +6,19 @@ router.get('', (req, res) => {
 })
 
 router.get('/home', (req, res) => {
-    res.send("This is home page. Collection of all news are here");
+    res.render('home');
 });
 
 router.get('/view/:id', (req, res) => {
-    res.send(`We can view news in detail with id = ${req.params.id}`);
+    res.render('articles');
 });
 
 router.get('/write', (req, res) => {
-    res.send("Write a news here");
+    res.render('write');
 });
 
 router.get('/about/:id', (req, res) => {
-    res.send("View all details about any author/user");
+    res.render('author');
 });
 
 module.exports = router;

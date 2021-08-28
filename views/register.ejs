@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/form.css">
+    <link rel="stylesheet" href="/static/css/form.css">
+    <%- include('./partials/headlinks') %>  
 </head>
 <body>
     
@@ -15,11 +16,11 @@
 
             <form action="/register" method="post" autocomplete="off">
                 <div class="inputs">
-                    <input type="text" name="name" id="name" placeholder="Set a Username" required>
+                    <input type="text" name="uname" id="name" placeholder="Set a Username" required>
                 </div>
 
                 <div class="inputs">
-                    <input type="text" name="name" id="name" placeholder="Enter your Full Name" required>
+                    <input type="text" name="full_name" id="name" placeholder="Enter your Full Name" required>
                 </div>
 
                 <div class="inputs">

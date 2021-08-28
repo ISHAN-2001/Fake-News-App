@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('./partials/headlinks') %>  
+    <link rel="stylesheet" href="/static/css/author.css">
+</head>
+<body>
+    <%- include('./partials/navbar') %> 
+
+    <main>
+        
+        <h1 class="heading">Author's Details</h1>
+
+        <div class="auth-card">
+            <p class="name"><b>Username : Ishan</b></p>
+            <p class="name">Full Name : Ishan Pattnayak</p>
+            <p class="date">Joined : 27/09/2021</p>
+            <p class="name">Number of articles written : 10</p>
+        </div>
+
+        <h2 class="heading">Articles by Ishan :-</h2>
+
+        <a href="/news/view/897">
+            <div class="article">
+                <p>U.S Airstrikes on Pakistan</p>
+                <p class="date">Today</p>
+            </div>
+        </a>
+
+        <a href="/news/view/897">
+            <div class="article">
+                <p>India England Test Series</p>
+                <p class="date">27/08/2021</p>
+            </div>
+        </a>
+        <a href="/news/view/897">
+            <div class="article">
+                <p>Apple Iphone 13 pro max</p>
+                <p class="date">27/08/2021</p>
+            </div>
+        </a>
+
+        
+    </main>
+
+    <script>
+        let  name= document.querySelectorAll('.name');
+        // console.log(name)
+        name[1].style.color = "#2385cc";
+        
+    </script>
+</body>
+</html>
