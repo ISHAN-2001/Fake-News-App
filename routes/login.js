@@ -12,7 +12,7 @@ router.get('/login', (req, res) => {
 router.post('/login', (req, res) => {
     console.log(req.body);
     res.redirect('/news')
-})
+});
 
 router.get("/register", (req, res) => {
     res.render('register');

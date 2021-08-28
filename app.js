@@ -3,7 +3,8 @@ const mongoose = require('mongoose')
 const morgan = require('morgan')
 
 const app = express();
-app.use(morgan('tiny'));
+
+app.use(morgan('tiny')); // to view logs
 
 //--------Connecting DB-------//
 let url  = require('./config/db')
@@ -12,14 +13,14 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
     .catch(err => console.log(err));
 
 
-// View Engine
+//------View Engine------//
 app.set('view engine', 'ejs')
 
-//Static folder
+//-----Static folder------//
 app.use('/static', express.static('static'))
 
 
-// Body Parser
+//-----Body Parser-----//
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -28,6 +29,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use('', require('./routes/login'));
 app.use('/news', require('./routes/news'));
 
+
+//-----404 error page------//
 app.use(function(req, res, next) {
     res.status(404);
   
@@ -38,6 +41,7 @@ app.use(function(req, res, next) {
     }
 
   });
+
 
 //-----Server----//
 app.listen(3000, console.log(`Running on http://localhost:3000`));

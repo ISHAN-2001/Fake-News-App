@@ -1,6 +1,9 @@
 body{
     background: #f1f5f8;
 }
+a{
+    text-decoration: none;
+}
 main{
     max-width: 1100px;
     margin: 40px auto;
