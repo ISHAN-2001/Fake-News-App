@@ -27,7 +27,8 @@ main  .topic{
 }
 main .date{
     font-size: 18px;
-    margin: 5px 0;
+    margin: 10px 0;
+    color: #dc3545;
 }
 
 main .author{

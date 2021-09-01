@@ -14,65 +14,23 @@
     
     <main>
 
-        <div class="blogs">
-            <p class="category"><%= user.username %> </p>
-            <h3 class="topic"><%= user.full_name %> </h3>
-            <p class="date"><%= user.id %> </p>
-            <p class="date"><%= user.joined_date %> </p>
-        </div>
-    
-        <a href="/news/view/12345">
-            <div class="blogs">
-                <p class="category">Category</p>
-                <h3 class="topic">Heading</h3>
-                <p class="date">28/08/2021</p>
-                <p class="body">
-                     consectetur adipisicing elit. Quibusdam optio facilis ... <span><b>Read more...</b></span>
-                </p>
-            </div>
-        </a>
-        <a href="/news/view/12345">
-            <div class="blogs">
-                <p class="category">Category</p>
-                <h3 class="topic">Heading</h3>
-                <p class="date">28/08/2021</p>
-                <p class="body">
-                     consectetur adipisicing elit. Quibusdam optio facilis ... <span><b>Read more...</b></span>
-                </p>
-            </div>
-        </a>
-        <a href="/news/view/12345">
-            <div class="blogs">
-                <p class="category">Category</p>
-                <h3 class="topic">Heading</h3>
-                <p class="date">28/08/2021</p>
-                <p class="body">
-                     consectetur adipisicing elit. Quibusdam optio facilis ... <span><b>Read more...</b></span>
-                </p>
-            </div>
-        </a>
-        <a href="/news/view/12345">
-            <div class="blogs">
-                <p class="category">Category</p>
-                <h3 class="topic">Heading</h3>
-                <p class="date">28/08/2021</p>
-                <p class="body">
-                     consectetur adipisicing elit. Quibusdam optio facilis ... <span><b>Read more...</b></span>
-                </p>
-            </div>
-        </a>
-        <a href="/news/view/12345">
-            <div class="blogs">
-                <p class="category">Category</p>
-                <!-- <h3 class="topic">Heading</h3> -->
-                <p class="date">28/08/2021</p>
-                <p class="body">
-                     consectetur adipisicing elit. Quibusdam optio facilis ... <span><b>Read more...</b></span>
-                </p>
-            </div>
-        </a>
-    
-       
+        <% if (records.length > 0) { %>
+
+            <% records.forEach(item => { %>
+                <a href="/news/view/<%= item._id %> ">
+                    <div class="blogs">
+                        <p class="category"><%= item.category %> </p>
+                        <p class="date"><%= item.published_date %> </p>
+                        <p class="body">
+                             <%= item.title.substring(0,80) %><span><b>...</b></span>
+                        </p>
+                    </div>
+                </a>
+            <% }) %>
+            
+        <% } else { %>
+            <p>No articles</p>
+        <% } %> 
     
     </main>
     

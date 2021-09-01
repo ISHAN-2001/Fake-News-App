@@ -15,13 +15,13 @@
         <h1 class="heading">Author's Details</h1>
 
         <div class="auth-card">
-            <p class="name"><b>Username : Ishan</b></p>
-            <p class="name">Full Name : Ishan Pattnayak</p>
-            <p class="date">Joined : 27/09/2021</p>
-            <p class="name">Number of articles written : 10</p>
+            <p class="name"><b>Username : <%= author.username %> </b></p>
+            <p class="name">Full Name : <%= author.full_name %> </p>
+            <p class="date">Joined : <%= author.joined_date %> </p>
+            <p class="name">Number of articles written : 0</p>
         </div>
 
-        <h2 class="heading">Articles by Ishan :-</h2>
+        <h2 class="heading">Articles by <%= author.username %>  :-</h2>
 
         <a href="/news/view/897">
             <div class="article">

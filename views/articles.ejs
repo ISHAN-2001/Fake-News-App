@@ -14,41 +14,16 @@
 
     <main>
 
-        <h4 class="category">World</h4>
-        <h3 class="topic">Taliban Retreat</h3>
+        <h4 class="category"><%= records.category %> </h4>
+        <p class="date"><%= records.published_date %> </p>
+        <h3 class="topic"><%= records.title %> </h3>
     
-        <a href="/news/about/73839"><p class="author">By Ishan</p></a>
-        <p class="date">28/08/2021</p>
+        <a href="/news/about/<%= records.author %> ">
+            <p class="author">By <%= name %> </p>
+        </a>
     
         <p class="desc">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, inventore?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, inventore?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, inventore?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, inventore?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, inventore?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, inventore?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, inventore?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, inventore?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, inventore?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, inventore?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, inventore?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, inventore?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, inventore?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, inventore?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, inventore?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, inventore?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, inventore?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, inventore?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, inventore?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, inventore?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, inventore?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, inventore?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, inventore?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, inventore?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, inventore?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, inventore?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, inventore?
-
+            <%- records.body %> 
         </p>
     
     
