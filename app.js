@@ -1,10 +1,16 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const morgan = require('morgan')
+const flash = require('connect-flash');
+const session = require('express-session');
+const passport = require('passport')
 
 const app = express();
 
+require('./config/passport')(passport);
+
 app.use(morgan('tiny')); // to view logs
+
 
 //--------Connecting DB-------//
 let url  = require('./config/db')
@@ -23,6 +29,32 @@ app.use('/static', express.static('static'))
 //-----Body Parser-----//
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+
+//----express-session -----//
+app.use(
+  session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
+  })
+);
+
+//------Passport middleware------//
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+//------Connect flash------//
+app.use(flash());
+
+//-----Global variables for flash--------//
+app.use(function(req, res, next) {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
+  next();
+});
 
 
 //-------Routes------//

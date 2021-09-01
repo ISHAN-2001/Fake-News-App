@@ -1,5 +1,5 @@
 {
-  "name": "nodeblog",
+  "name": "fakenews",
   "version": "1.0.0",
   "description": "A website full of fake news",
   "main": "app.js",
@@ -9,9 +9,13 @@
   "author": "ishan",
   "license": "ISC",
   "dependencies": {
+    "connect-flash": "^0.1.1",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "express-session": "^1.17.2",
     "mongoose": "^6.0.2",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0"
   }
 }

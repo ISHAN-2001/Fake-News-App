@@ -10,10 +10,16 @@
 <body>
     <%- include('./partials/navbar') %> 
 
-    <h1 class="heading">Top Headlines :-</h1>
+    <h1 class="heading"> Top Headlines :-</h1>
     
     <main>
 
+        <div class="blogs">
+            <p class="category"><%= user.username %> </p>
+            <h3 class="topic"><%= user.full_name %> </h3>
+            <p class="date"><%= user.id %> </p>
+            <p class="date"><%= user.joined_date %> </p>
+        </div>
     
         <a href="/news/view/12345">
             <div class="blogs">

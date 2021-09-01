@@ -31,6 +31,7 @@ nav{
     width: 90px;
     border-radius: 4px;
     text-align: center;
+    position: relative;
 }
 .link a{
     text-decoration: none;
@@ -56,6 +57,7 @@ nav{
     border-radius: 4px;
     width: 150px;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    transition: 0.5s ease-in-out;
 }
 .submenu li{
     padding: 10px 0;
@@ -76,6 +78,6 @@ nav{
     display: flex !important;
     flex-direction: column;
     position: absolute;
-    top: 65px;
-    left: 435px;
+    top: 40px;
+    left: -30px;
 }
