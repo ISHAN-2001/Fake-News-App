@@ -91,7 +91,17 @@ router.get('/about/:id', ensureAuthenticated, (req, res) => {
             if (!record) {
                 res.redirect('/error');
             }
-            res.render('author', { user : req.user , author: record });
+            //finding articles written by same author
+
+            articles.find({ author: record._id })
+                .sort({_id :-1})
+                .then(articles => {
+                    res.render('author', { user: req.user, author: record , articles: articles});
+                })
+                .catch(err => {
+                    res.redirect('/error');
+                });
+
         })
         .catch(err => {
             console.log(err);

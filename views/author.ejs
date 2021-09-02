@@ -18,30 +18,26 @@
             <p class="name"><b>Username : <%= author.username %> </b></p>
             <p class="name">Full Name : <%= author.full_name %> </p>
             <p class="date">Joined : <%= author.joined_date %> </p>
-            <p class="name">Number of articles written : 0</p>
+            <p class="name">Number of articles written : <%= articles.length %> </p>
         </div>
 
         <h2 class="heading">Articles by <%= author.username %>  :-</h2>
 
-        <a href="/news/view/897">
-            <div class="article">
-                <p>U.S Airstrikes on Pakistan</p>
-                <p class="date">Today</p>
-            </div>
-        </a>
+        <% if (articles.length <= 0) { %>
+            <p style="margin: 20px auto;text-align: center; ">No Articles written. Click on create to write one</p>
+        <% } else {%>
+        
+        <% articles.forEach(item => { %>
+            
+            <a href="/news/view/<%= item._id %> ">
+                <div class="article">
+                    <p><%= item.title.substring(0,40) %>...</p>
+                    <p class="date"><%= item.published_date %> </p>
+                </div>
+            </a>
 
-        <a href="/news/view/897">
-            <div class="article">
-                <p>India England Test Series</p>
-                <p class="date">27/08/2021</p>
-            </div>
-        </a>
-        <a href="/news/view/897">
-            <div class="article">
-                <p>Apple Iphone 13 pro max</p>
-                <p class="date">27/08/2021</p>
-            </div>
-        </a>
+
+        <% }); }%>
 
         
     </main>
