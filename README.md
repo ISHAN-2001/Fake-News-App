@@ -1,5 +1,5 @@
 # Fake-News-App
-A News app using Express -JS
+A News website intended to spread fake news
 
 ## Run Locally :-
 1. Clone this repo.
