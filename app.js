@@ -12,11 +12,9 @@ require('./config/passport')(passport);
 app.use(morgan('tiny')); // to view logs
 
 
-//--------Connecting DB-------//
+//--------Connecting Mongo DB-------//
 let url  = require('./config/db')
-mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log("Mongo DB Connected"))
-    .catch(err => console.log(err));
+
 
 
 //------View Engine------//

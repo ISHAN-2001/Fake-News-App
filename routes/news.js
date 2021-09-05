@@ -110,5 +110,20 @@ router.get('/about/:id', ensureAuthenticated, (req, res) => {
     // res.render('author',{user : req.user});
 });
 
+router.get('/category/:cat', ensureAuthenticated, (req, res) => {
+    
+    let cat = req.params.cat;
+
+    articles.find({ category: cat })
+        .sort({_id:-1})
+        .then(records => {
+            res.render('category', { records: records,user: req.user });
+        })
+        .catch(err => {
+            console.log(err);
+            res.redirect('/error')
+        });
+});
+
 module.exports = router;
 

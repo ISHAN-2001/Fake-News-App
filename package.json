@@ -4,7 +4,7 @@
   "description": "A website full of fake news",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app"
+    "start": "node app"
   },
   "author": "ishan",
   "license": "ISC",
