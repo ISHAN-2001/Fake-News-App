@@ -125,5 +125,18 @@ router.get('/category/:cat', ensureAuthenticated, (req, res) => {
         });
 });
 
+router.get('/delete/:id', ensureAuthenticated, (req, res) => {
+    
+    let id = req.params.id;
+
+    articles.findByIdAndDelete(id)
+        .then(records => {
+            res.redirect('/news');
+        })
+        .catch(err => {
+            res.redirect('/error');
+        });
+});
+
 module.exports = router;
 

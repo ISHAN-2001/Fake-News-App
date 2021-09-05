@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <%- include('./partials/headlinks') %>  
     <link rel="stylesheet" href="/static/css/author.css">
 </head>
@@ -32,7 +33,16 @@
             <a href="/news/view/<%= item._id %> ">
                 <div class="article">
                     <p><%= item.title.substring(0,40) %>...</p>
-                    <p class="date"><%= item.published_date %> </p>
+
+                    <div class="right">
+                        <p class="date"><%= item.published_date %>  </p>
+
+                        <!----Delete only if Author is user----->
+                        <% if (String(user._id) == String(author._id)) { %>         
+                            <a href="/news/delete/<%= item._id %> "><i class="fas fa-trash-alt"></i></a>
+                        <% } %> 
+                    </div>
+
                 </div>
             </a>
 

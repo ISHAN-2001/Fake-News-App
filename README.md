@@ -8,4 +8,4 @@ A News website intended to spread fake news
 4. Open localhost:3000 on browser to view it
 
 ## Future improvements :-
-Search news by category
+Work is still going on
