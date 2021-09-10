@@ -148,7 +148,7 @@ router.get('/cases/:name1', ensureAuthenticated, async (req, res) => {
 
     try {
         const r1 = await cases.find({ name: name1 });
-        console.log(r1[0]);
+        //console.log(r1[0]);
         res.render('cases',{records:r1[0] , region : name1})
     }catch (err) {
         console.log(err);
