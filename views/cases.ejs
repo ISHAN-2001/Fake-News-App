@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('./partials/headlinks') %>  
+    <link rel="stylesheet" href="/static/css/author.css">
+</head>
+<body>
+
+    <main>
+        <h1 class="heading"><%= region %>'s Cases</h1>
+
+        <div class="auth-card">
+            <p class="name">Region : <%= region %> </p>
+            <p class="name">Total Positive cases: <%= records.confirmed %> </p>
+            <p class="date">Total Recovered : No data from API provider</p>
+            <p class="name">Total Deaths :<%= records.death %></p>
+            <p class="name">Total Vaccinated : Will update Later</p>
+            <p class="date">*Note : Data updates once a day.</p>
+        </div>
+
+    </main>
+    
+</body>
+</html>

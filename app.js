@@ -3,13 +3,14 @@ const mongoose = require('mongoose')
 const morgan = require('morgan')
 const flash = require('connect-flash');
 const session = require('express-session');
-const passport = require('passport')
+const passport = require('passport');
+const fetch = require('cross-fetch');
 
 const app = express();
 
 require('./config/passport')(passport);
 
-app.use(morgan('tiny')); // to view logs
+//app.use(morgan('tiny')); // to view logs
 
 
 //--------Connecting Mongo DB-------//
@@ -53,6 +54,90 @@ app.use(function(req, res, next) {
   res.locals.error = req.flash('error');
   next();
 });
+
+
+let cases = require('./models/covid');
+//----------Fetching data from api and saving to MongoDB-----//
+async function savedata(url,country) {
+  
+  try {
+    const res = await fetch(url);
+    
+    if (res.status >= 400) {
+      throw new Error("Bad response from server");
+    }
+    
+    const data = await res.json();
+    
+    let c1 = new cases({
+      name: country,
+      confirmed: data.All.confirmed,
+      death: data.All.deaths,
+      
+    })
+    
+    c1.save(err => {
+      if (err) {
+        console.log("Cannot Save");
+      }
+      else {
+        console.log("Saved");
+      }
+    });
+
+  } catch (err) {
+    console.error(err);
+  }
+  
+}
+
+
+//------------Will fetch data from api only once a day----------//
+var no = 0;
+app.use(async function (req, res, next) {
+
+  if (no == 0) {
+
+    try {
+      
+      const records = await cases.find();
+      if (records.length == 0) {
+        console.log("no records");
+        savedata('https://covid-api.mmediagroup.fr/v1/cases?country=India', 'India'); // Caching the data from api
+        savedata('https://covid-api.mmediagroup.fr/v1/cases?country=Global', 'Global');
+      }
+      else {
+        console.log("Lots of records");
+
+        const r1 = await cases.find({ name: 'India' });
+        //console.log(r1);
+        if (r1[0].published_date == false) {
+          let d1 = await cases.deleteOne({ name: "India" });
+          savedata('https://covid-api.mmediagroup.fr/v1/cases?country=India', 'India');
+         // console.log("Removed India");
+        }
+
+        const r2 = await cases.find({ name: 'Global' });
+        //console.log(r2);
+        if (r2[0].published_date == false) {
+          let d2 = await cases.deleteOne({ name: "Global" });
+          savedata('https://covid-api.mmediagroup.fr/v1/cases?country=Global', 'Global');
+         // console.log("Global Removed");
+        }
+
+      }
+    } catch (err) {
+      console.log("Error in try-catch");
+    }
+
+  
+    no = 1;
+  }
+
+  
+  
+  next();
+})
 
 
 //-------Routes------//

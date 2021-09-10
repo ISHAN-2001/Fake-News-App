@@ -2,13 +2,15 @@ var express = require('express');
 var router = express.Router();
 const users = require('../models/users');
 const articles = require('../models/articles');
+const cases = require('../models/covid');
 const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
 
-router.get('',ensureAuthenticated,(req, res) => {
+router.get('', ensureAuthenticated, (req, res) => {
     res.redirect('/news/home');
 })
 
 router.get('/home', ensureAuthenticated, (req, res) => {
+    
     // console.log(req.user);
     articles.find({})
         
@@ -136,6 +138,23 @@ router.get('/delete/:id', ensureAuthenticated, (req, res) => {
         .catch(err => {
             res.redirect('/error');
         });
+    
+
+});
+
+router.get('/cases/:name1', ensureAuthenticated, async (req, res) => {
+    let name1 = req.params.name1;
+    console.log(name1)
+
+    try {
+        const r1 = await cases.find({ name: name1 });
+        console.log(r1[0]);
+        res.render('cases',{records:r1[0] , region : name1})
+    }catch (err) {
+        console.log(err);
+        res.redirect('/error');
+      }
+
 });
 
 module.exports = router;
