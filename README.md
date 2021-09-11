@@ -1,6 +1,8 @@
 # Fake-News-App
 A News website intended to spread fake news. Create News, post pictures , see what other writers are posting . Also includes a Covid Tracker [api](https://github.com/M-Media-Group/Covid-19-API#built-using-this-api)
 
+[Click here](https://ishansfakenewsapp.herokuapp.com/) to view live
+
 ## Run Locally :-
 1. Clone this repo.
 2. Run ```npm install ```
