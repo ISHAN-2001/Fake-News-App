@@ -161,4 +161,4 @@ app.use(function(req, res, next) {
 
 //-----Server----//
 let PORT = process.env.PORT || 3000;
-app.listen(3000, console.log(`Running on port ${PORT}`));
+app.listen(3000 ,'0.0.0.0', console.log(`Running on port ${PORT}`));
