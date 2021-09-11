@@ -5,6 +5,7 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
 const fetch = require('cross-fetch');
+require('dotenv').config()
 
 const app = express();
 
@@ -159,4 +160,5 @@ app.use(function(req, res, next) {
 
 
 //-----Server----//
-app.listen(3000, console.log(`Running on http://localhost:3000`));
+let PORT = process.env.PORT || 3000;
+app.listen(3000, console.log(`Running on port ${PORT}`));
